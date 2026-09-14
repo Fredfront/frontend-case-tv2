@@ -1,0 +1,346 @@
+/* Stilark for case-stillaset. Holdes bevisst utenfor appens egen CSS. */
+
+.case {
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.25rem 1.25rem;
+  color: #e8ecf1;
+  background: #1f2733;
+  border: 1px solid #2c3644;
+  border-radius: 10px;
+}
+
+.case--complete {
+  background: #14321f;
+  border-color: #2f6b41;
+}
+
+.case__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+}
+
+.case__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.case__title-icon {
+  margin-right: 0.4rem;
+}
+
+.case__count {
+  margin: 0;
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  color: #aab6c4;
+}
+
+.case--complete .case__count {
+  color: #a9d9b8;
+}
+
+.case__toggle,
+.case__reset {
+  padding: 0.3rem 0.7rem;
+  font: inherit;
+  font-size: 0.82rem;
+  color: #cfd7e0;
+  background: none;
+  border: 1px solid #3c4858;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.case__toggle:hover,
+.case__reset:hover {
+  color: #fff;
+  border-color: #57657a;
+}
+
+.case__toggle:focus-visible,
+.case__reset:focus-visible {
+  outline: 2px solid #7aa7ff;
+  outline-offset: 2px;
+}
+
+.case__bar {
+  height: 6px;
+  margin: 0.85rem 0 0;
+  overflow: hidden;
+  background: #2c3644;
+  border-radius: 999px;
+}
+
+.case__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a8cff, #6ddf9c);
+  border-radius: 999px;
+  transition: width 300ms ease;
+}
+
+.case__lead {
+  margin: 1rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #aab6c4;
+}
+
+.case__lead--done {
+  font-weight: 600;
+  color: #a9d9b8;
+}
+
+/* Saksliste som «board» med lapper */
+
+.board {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0.85rem 0.65rem;
+  color: #1b1f23;
+  background: #fff;
+  border-radius: 6px;
+  border-left: 3px solid #d94a3d;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 35%);
+}
+
+.ticket--fixed {
+  border-left-color: #2f9e5e;
+  background: #f4fbf6;
+}
+
+.ticket__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+
+.ticket__type {
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+.ticket__key {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #5c6670;
+}
+
+.ticket--fixed .ticket__key {
+  text-decoration: line-through;
+}
+
+.ticket__priority,
+.ticket__status {
+  padding: 0.08rem 0.38rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 3px;
+}
+
+.ticket__priority--kritisk {
+  color: #fff;
+  background: #b3261e;
+}
+
+.ticket__priority--hoy {
+  color: #fff;
+  background: #c4561b;
+}
+
+.ticket__priority--middels {
+  color: #4a3c00;
+  background: #f2c744;
+}
+
+.ticket__priority--lav {
+  color: #33404d;
+  background: #dfe3e8;
+}
+
+.ticket__status {
+  margin-left: auto;
+  color: #33404d;
+  background: #eceff2;
+}
+
+.ticket__status--fixed {
+  color: #fff;
+  background: #2f9e5e;
+}
+
+.ticket__title {
+  margin: 0 0 0.45rem;
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.ticket__report {
+  margin: 0;
+  padding: 0 0 0 0.6rem;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: #3d4651;
+  border-left: 2px solid #e4e8ec;
+}
+
+.ticket__reporter {
+  margin: 0.5rem 0 0.7rem;
+  font-size: 0.76rem;
+  font-style: italic;
+  color: #6b7683;
+}
+
+.ticket__foot {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px solid #e9edf0;
+}
+
+.ticket__test {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #4b5563;
+}
+
+.ticket__test-label {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8a929a;
+}
+
+.ticket__auto,
+.ticket__check {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #5c6670;
+}
+
+.ticket__check {
+  cursor: pointer;
+}
+
+.ticket__check input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #2f9e5e;
+}
+
+.ticket__check input:focus-visible {
+  outline: 2px solid #1f5fd8;
+  outline-offset: 2px;
+}
+
+.ticket__auto--fixed {
+  color: #217a48;
+}
+
+/* Saker som krever en vurdering */
+
+.review {
+  margin-top: 1.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px dashed #3c4858;
+}
+
+.review__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin: 0 0 0.2rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #e8ecf1;
+}
+
+.review__note {
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #8e9bab;
+}
+
+.ticket--review {
+  border-left-color: #4a8cff;
+}
+
+.ticket--handled {
+  border-left-color: #8a929a;
+  background: #f7f8f9;
+}
+
+.ticket--handled .ticket__key {
+  text-decoration: line-through;
+}
+
+.ticket__status--review {
+  color: #17365f;
+  background: #d7e5ff;
+}
+
+.ticket__warning {
+  margin: 0.6rem 0 0;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  font-weight: 600;
+  color: #8a2a12;
+  background: #fdeee7;
+  border: 1px solid #f3c4ae;
+  border-radius: 4px;
+}
+
+.case__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid #2c3644;
+}
+
+.case__footer-note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #8e9bab;
+}
+
+.case__footer-note code {
+  padding: 0.1rem 0.3rem;
+  font-size: 0.9em;
+  background: #2c3644;
+  border-radius: 4px;
+}
