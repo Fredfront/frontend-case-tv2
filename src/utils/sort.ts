@@ -15,7 +15,7 @@ export function sortCampaigns(
   direction: SortDirection,
 ): Campaign[] {
   const sorted = [...campaigns].sort((a, b) =>
-    String(a[key]).localeCompare(String(b[key]), 'nb'),
+    key === 'name' ? a.name.localeCompare(b.name, 'nb') : a[key] - b[key],
   );
 
   return direction === 'asc' ? sorted : sorted.reverse();

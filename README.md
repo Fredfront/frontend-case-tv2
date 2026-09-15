@@ -33,7 +33,7 @@ npm run format      # Prettier
 
 Øverst i appen ligger et panel som holder oversikt for deg.
 
-- **Fire av feilene sjekker appen selv.** De huker seg av i det rettingen din
+- **To av feilene sjekker appen selv.** De huker seg av i det rettingen din
   virker – du trenger ikke gjøre noe. Sjekkene er bevisst romslige og godtar
   flere gyldige løsninger.
 - **Fire av dem må du verifisere og huke av selv.** Disse kan ikke oppdages
@@ -55,7 +55,7 @@ feilsøke – **du trenger ikke endre noe der.**
 
 ## Feilene
 
-Under er symptomene slik en bruker ville beskrevet dem – de samme åtte som står
+Under er symptomene slik en bruker ville beskrevet dem – de samme seks som står
 som saker i framdriftspanelet. Årsaken må du finne selv. Ta dem i den
 rekkefølgen du synes er mest fornuftig, og prioriter gjerne høyt hvis tiden blir
 knapp.
@@ -69,29 +69,22 @@ ikke være enig i dem.
    du påfallende sakte, ett tegn i sekundet, oppfører den seg riktig. Det er en
    del av symptomet.
 
-2. **Sortering på tall er feil.** Klikk på kolonnen «Budsjett». Radene sorteres
-   ikke etter kronebeløp. Samme problem på «Visninger».
-
-3. **Avkrysning gjør ingenting.** Kryss av en kampanje i lista. Teksten over
+2. **Avkrysning gjør ingenting.** Kryss av en kampanje i lista. Teksten over
    tabellen står fortsatt på «0 valgt · totalt budsjett 0 kr».
 
-4. **Detaljpanelet henger igjen.** Klikk på en kampanje for å åpne panelet til
+3. **Detaljpanelet henger igjen.** Klikk på en kampanje for å åpne panelet til
    høyre. Klikk deretter på en annen kampanje – panelet viser fortsatt den
    første.
 
-5. **Lagring henger og feiler stille.** Åpne en kampanje og lagre et nytt
+4. **Lagring henger og feiler stille.** Åpne en kampanje og lagre et nytt
    budsjett to ganger. Serveren feiler på annenhver lagring, og da blir knappen
    stående på «Lagrer …» for alltid. Brukeren får aldri vite om lagringen gikk
    bra eller galt.
 
-6. **«NaN %» i forbrukskolonnen.** Kampanjen «Ny app-lansering» viser `NaN %`
+5. **«NaN %» i forbrukskolonnen.** Kampanjen «Ny app-lansering» viser `NaN %`
    under «Forbruk».
 
-7. **Statusfiltrene kan ikke brukes med tastatur.** Tab deg gjennom siden.
-   Filtrene «Alle / Aktive / Pausede / Avsluttede» får ikke fokus, og kan ikke
-   aktiveres med tastatur.
-
-8. **Skjermleser mangler informasjon.** Søkefeltet har ingen ordentlig ledetekst,
+6. **Skjermleser mangler informasjon.** Søkefeltet har ingen ordentlig ledetekst,
    og statuskolonnen i tabellen formidler status utelukkende med farge.
 
 ## To saker som ikke er feilretting

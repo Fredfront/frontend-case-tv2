@@ -1,6 +1,4 @@
-import type { Campaign } from '../types';
 import { utilizationPercent } from '../utils/format';
-import { sortCampaigns } from '../utils/sort';
 
 /**
  * Definisjonen av oppgaven. Denne mappa er stillaset rundt caset, ikke en del
@@ -35,45 +33,6 @@ export const prioritySlug: Record<Priority, string> = {
   Lav: 'lav',
 };
 
-const probe = (name: string, budget: number, impressions: number): Campaign => ({
-  id: `probe-${name}`,
-  name,
-  advertiser: 'Probe',
-  status: 'aktiv',
-  budget,
-  spent: 0,
-  impressions,
-  startDate: '2026-01-01',
-  endDate: '2026-12-31',
-});
-
-const probes = () => [
-  probe('a', 90000, 310000),
-  probe('b', 1200000, 4820000),
-  probe('c', 150000, 520000),
-];
-
-const isSorted = (values: number[], direction: 'asc' | 'desc') =>
-  values.every((value, index) => {
-    if (index === 0) return true;
-    const previous = values[index - 1];
-    return direction === 'asc' ? previous <= value : previous >= value;
-  });
-
-function sortingIsFixed(): boolean {
-  const byBudgetAsc = sortCampaigns(probes(), 'budget', 'asc').map((c) => c.budget);
-  const byBudgetDesc = sortCampaigns(probes(), 'budget', 'desc').map((c) => c.budget);
-  const byImpressions = sortCampaigns(probes(), 'impressions', 'asc').map(
-    (c) => c.impressions,
-  );
-
-  return (
-    isSorted(byBudgetAsc, 'asc') &&
-    isSorted(byBudgetDesc, 'desc') &&
-    isSorted(byImpressions, 'asc')
-  );
-}
-
 function utilizationIsFixed(): boolean {
   // Kravet er bare at et budsjett på 0 ikke lenger gir NaN. Om du returnerer
   // null, 0 eller noe annet er en avveiing vi heller diskuterer.
@@ -86,19 +45,6 @@ function utilizationIsFixed(): boolean {
 
   const table = document.querySelector('.campaign-table');
   return !(table?.textContent ?? '').includes('NaN');
-}
-
-function statusFiltersAreFocusable(): boolean {
-  const options = Array.from(document.querySelectorAll('.status-filter > *'));
-  if (options.length === 0) return false;
-
-  return options.every((option) => {
-    const isInteractive = option.matches(
-      'button, a[href], [role="button"], [role="radio"], [role="tab"], [role="checkbox"], [role="switch"]',
-    );
-    const isFocusable = (option as HTMLElement).tabIndex >= 0;
-    return isInteractive && isFocusable;
-  });
 }
 
 function searchFieldHasAccessibleName(): boolean {
@@ -149,21 +95,9 @@ export const bugs: BugDefinition[] = [
       'Skriv «nyhet» i søkefeltet uten å stoppe mellom tegnene, og se hva lista lander på. Følg med: den kan vise det riktige treffet et øyeblikk før det blir overskrevet.',
   },
   {
-    id: 'numeric-sort',
-    key: 'ADWB-4402',
-    number: 2,
-    title: 'Sortering på budsjett gir rar rekkefølge',
-    priority: 'Lav',
-    reporter: 'Jonas, salgssjef',
-    report:
-      'Skulle finne de største kampanjene våre, så jeg sorterte på budsjett. Rekkefølgen ser helt tilfeldig ut – kampanjen på 1,2 millioner havner et stykke ned i lista, mellom to som ligger på noen hundre tusen. Samme greia på visninger.',
-    reproduce: 'Sorter på «Budsjett» og «Visninger», begge veier.',
-    verify: sortingIsFixed,
-  },
-  {
     id: 'selection-state',
     key: 'ADWB-4488',
-    number: 3,
+    number: 2,
     title: 'Kan ikke velge flere kampanjer',
     priority: 'Høy',
     reporter: 'Marte, kampanjeplanlegger',
@@ -174,7 +108,7 @@ export const bugs: BugDefinition[] = [
   {
     id: 'details-stale',
     key: 'ADWB-4455',
-    number: 4,
+    number: 3,
     title: 'Detaljpanelet viser forrige kampanje',
     priority: 'Høy',
     reporter: 'Henrik, trafikkansvarlig',
@@ -185,7 +119,7 @@ export const bugs: BugDefinition[] = [
   {
     id: 'save-error',
     key: 'ADWB-4491',
-    number: 5,
+    number: 4,
     title: 'Vet ikke om budsjettet ble lagret',
     priority: 'Kritisk',
     reporter: 'Marte, kampanjeplanlegger',
@@ -197,7 +131,7 @@ export const bugs: BugDefinition[] = [
   {
     id: 'nan-percent',
     key: 'ADWB-4417',
-    number: 6,
+    number: 5,
     title: 'Det står «NaN %» på en kampanje',
     priority: 'Høy',
     reporter: 'Sofie, kampanjeplanlegger',
@@ -207,21 +141,9 @@ export const bugs: BugDefinition[] = [
     verify: utilizationIsFixed,
   },
   {
-    id: 'filter-keyboard',
-    key: 'ADWB-4436',
-    number: 7,
-    title: 'Kommer ikke til filtrene med tastatur',
-    priority: 'Lav',
-    reporter: 'Henrik, trafikkansvarlig',
-    report:
-      'Jeg bruker tastatur mest mulig fordi musa gir meg vondt i håndleddet. Jeg kommer meg gjennom hele siden med Tab, men filtrene Alle/Aktive/Pausede hopper den rett over. Må ta fram musa hver gang jeg skal filtrere.',
-    reproduce: 'Tab deg til filtrene og aktiver ett med tastaturet.',
-    verify: statusFiltersAreFocusable,
-  },
-  {
     id: 'screen-reader',
     key: 'ADWB-4429',
-    number: 8,
+    number: 6,
     title: 'Funn fra tilgjengelighetsgjennomgang',
     priority: 'Lav',
     reporter: 'Lene, ansvarlig for universell utforming',

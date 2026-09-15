@@ -18,13 +18,15 @@ export function StatusFilter({ value, onChange }: StatusFilterProps) {
   return (
     <div className="status-filter">
       {options.map((option) => (
-        <div
+        <button
           key={option.value}
+          type="button"
           className={`chip ${option.value === value ? 'chip--selected' : ''}`}
+          aria-pressed={option.value === value}
           onClick={() => onChange(option.value)}
         >
           {option.label}
-        </div>
+        </button>
       ))}
     </div>
   );
