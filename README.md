@@ -12,7 +12,7 @@ rekker. Tenk høyt, still spørsmål, og si fra hvis noe er uklart.
 
 ## Kom i gang
 
-Du trenger Node 20 eller nyere.
+Du trenger Node 20 eller nyere
 
 ```bash
 npm install
