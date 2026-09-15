@@ -1,4 +1,6 @@
 import { utilizationPercent } from '../utils/format';
+import { sortCampaigns } from '../utils/sort';
+import type { Campaign } from '../types';
 
 /**
  * Definisjonen av oppgaven. Denne mappa er stillaset rundt caset, ikke en del
@@ -45,6 +47,20 @@ function utilizationIsFixed(): boolean {
 
   const table = document.querySelector('.campaign-table');
   return !(table?.textContent ?? '').includes('NaN');
+}
+
+function budgetSortIsFixed(): boolean {
+  // Bare rekkefølgen sjekkes. Om kandidaten skiller på type, bruker
+  // localeCompare med numeric: true eller noe helt annet er likegyldig.
+  const sample = [150000, 1200000, 0, 90000].map(
+    (budget) => ({ budget }) as unknown as Campaign,
+  );
+
+  const ascending = sortCampaigns(sample, 'budget', 'asc').map((item) => item.budget);
+  if (ascending.join() !== '0,90000,150000,1200000') return false;
+
+  const descending = sortCampaigns(sample, 'budget', 'desc').map((item) => item.budget);
+  return descending.join() === '1200000,150000,90000,0';
 }
 
 function searchFieldHasAccessibleName(): boolean {
@@ -140,6 +156,19 @@ export const bugs: BugDefinition[] = [
       'Det står «NaN %» i forbrukskolonnen på app-lanseringen jeg opprettet i går. Hva betyr NaN? Er det noe jeg har gjort feil da jeg satte den opp? Kampanjen har ikke fått budsjett ennå, hvis det har noe å si.',
     reproduce: 'Se på raden «Ny app-lansering».',
     verify: utilizationIsFixed,
+  },
+  {
+    id: 'budget-sort',
+    key: 'ADWB-4402',
+    number: 6,
+    title: 'Sortering på budsjett gir feil rekkefølge',
+    priority: 'Middels',
+    reporter: 'Anders, controller',
+    report:
+      'Jeg sorterer på budsjett for å finne de største kampanjene, men rekkefølgen blir helt tilfeldig. Kampanjen på 1,2 millioner havner mellom 0 kr og 150 000 kr, og visninger oppfører seg like rart. Jeg tør ikke prioritere ut fra en liste jeg ikke kan stole på rekkefølgen i.',
+    reproduce:
+      'Klikk «Budsjett» i tabellhodet og les kolonnen ovenfra og ned. Sjekk «Visninger» også.',
+    verify: budgetSortIsFixed,
   },
 ];
 

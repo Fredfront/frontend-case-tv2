@@ -25,3 +25,4 @@ dist-ssr
 
 # Playwright MCP snapshots
 .playwright-mcp/
+/FASIT-fe-case-kampanjeoversikt.md
