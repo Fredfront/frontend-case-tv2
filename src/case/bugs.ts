@@ -170,6 +170,18 @@ export const bugs: BugDefinition[] = [
       'Klikk «Budsjett» i tabellhodet og les kolonnen ovenfra og ned. Sjekk «Visninger» også.',
     verify: budgetSortIsFixed,
   },
+  {
+    id: 'date-format',
+    key: 'ADWB-4520',
+    number: 7,
+    title: 'Det står «Invalid Date» i perioden',
+    priority: 'Middels',
+    reporter: 'Ingrid, salgskoordinator',
+    report:
+      'Når jeg åpner en kampanje står det bare «Invalid Date – Invalid Date» der perioden skal være. Henrik sitter rett ved siden av meg, og på skjermen hans ser de samme kampanjene helt riktige ut. Er det noe galt med maskinen min? Jeg bruker Safari, hvis det har noe å si.',
+    reproduce:
+      'Åpne en kampanje og les feltet «Periode» i detaljpanelet. Sjekk i mer enn én nettleser – saken er meldt fra Safari.',
+  },
 ];
 
 export const autoVerifiedCount = bugs.filter((bug) => bug.verify).length;

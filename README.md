@@ -36,7 +36,7 @@ npm run format      # Prettier
 - **To av feilene sjekker appen selv.** De huker seg av i det rettingen din
   virker – du trenger ikke gjøre noe. Sjekkene er bevisst romslige og godtar
   flere gyldige løsninger.
-- **Fire av dem må du verifisere og huke av selv.** Disse kan ikke oppdages
+- **Fem av dem må du verifisere og huke av selv.** Disse kan ikke oppdages
   automatisk på en pålitelig måte. Hvert punkt har en kort instruks for hvordan
   du reproduserer feilen, og dermed hvordan du vet at den er borte.
 
@@ -57,3 +57,6 @@ feilsøke – **du trenger ikke endre noe der.**
 
 Bruk hva du vil: din egen editor, debugger, React DevTools, dokumentasjon,
 Google og AI-verktøy som Copilot, Cursor eller Claude.
+
+Én av sakene er meldt fra en annen nettleser enn den du sannsynligvis utvikler
+i. Det er verdt å lese hvor sakene kommer fra.

@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { fetchCampaign } from '../api/mockApi';
-import { formatKroner, formatNumber, utilizationPercent } from '../utils/format';
+import {
+  formatDate,
+  formatKroner,
+  formatNumber,
+  utilizationPercent,
+} from '../utils/format';
 import { BudgetEditor } from './BudgetEditor';
 import type { Campaign } from '../types';
 
@@ -46,7 +51,7 @@ export function CampaignDetails({ campaignId, onClose }: CampaignDetailsProps) {
             <dd>{statusLabels[campaign.status]}</dd>
             <dt>Periode</dt>
             <dd>
-              {campaign.startDate} – {campaign.endDate}
+              {formatDate(campaign.startDate)} – {formatDate(campaign.endDate)}
             </dd>
             <dt>Budsjett</dt>
             <dd>{formatKroner(campaign.budget)}</dd>
