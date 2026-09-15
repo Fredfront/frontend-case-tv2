@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { ProgressPanel } from './case/ProgressPanel';
 import { CampaignDetails } from './components/CampaignDetails';
 import { CampaignTable } from './components/CampaignTable';
@@ -15,6 +15,7 @@ export function App() {
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [openCampaignId, setOpenCampaignId] = useState<string | null>(null);
+  const clickedCampaignId = useRef<string | null>(null);
 
   const { campaigns, isLoading, error } = useCampaigns(query);
 
@@ -39,6 +40,11 @@ export function App() {
 
     setSortKey(key);
     setSortDirection('asc');
+  }
+
+  function handleOpenCampaign(id: string) {
+    setOpenCampaignId(clickedCampaignId.current);
+    clickedCampaignId.current = id;
   }
 
   function handleToggleSelected(id: string) {
@@ -85,7 +91,7 @@ export function App() {
               sortDirection={sortDirection}
               onToggleSort={handleToggleSort}
               onToggleSelected={handleToggleSelected}
-              onOpenCampaign={setOpenCampaignId}
+              onOpenCampaign={handleOpenCampaign}
             />
           )}
         </main>

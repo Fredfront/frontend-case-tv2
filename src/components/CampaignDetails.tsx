@@ -26,7 +26,7 @@ export function CampaignDetails({ campaignId, onClose }: CampaignDetailsProps) {
       setCampaign(result);
       setIsLoading(false);
     });
-  }, []);
+  }, [campaignId]);
 
   return (
     <aside className="details" aria-label="Kampanjedetaljer">

@@ -113,8 +113,9 @@ export const bugs: BugDefinition[] = [
     priority: 'Høy',
     reporter: 'Henrik, trafikkansvarlig',
     report:
-      'Åpner en kampanje, klikker videre på neste i lista, og så står det fortsatt den forrige i panelet til høyre. Jeg var veldig nær å endre budsjettet på feil kampanje i dag. Dette er litt skummelt.',
-    reproduce: 'Åpne én kampanje, klikk deretter på en annen.',
+      'Jeg klikker på en kampanje og ingenting skjer. Klikker jeg på en annen etterpå, spretter panelet opp – men da med den forrige kampanjen i stedet. Panelet ligger altså alltid ett klikk bak. Jeg var veldig nær å endre budsjettet på feil kampanje i dag. Dette er litt skummelt.',
+    reproduce:
+      'Klikk på «Fotball-EM opptakt», og deretter på «Julekalender 2026». Hvilken kampanje står i panelet til høyre?',
   },
   {
     id: 'save-error',
@@ -139,18 +140,6 @@ export const bugs: BugDefinition[] = [
       'Det står «NaN %» i forbrukskolonnen på app-lanseringen jeg opprettet i går. Hva betyr NaN? Er det noe jeg har gjort feil da jeg satte den opp? Kampanjen har ikke fått budsjett ennå, hvis det har noe å si.',
     reproduce: 'Se på raden «Ny app-lansering».',
     verify: utilizationIsFixed,
-  },
-  {
-    id: 'screen-reader',
-    key: 'ADWB-4429',
-    number: 6,
-    title: 'Funn fra tilgjengelighetsgjennomgang',
-    priority: 'Lav',
-    reporter: 'Lene, ansvarlig for universell utforming',
-    report:
-      'Videreformidler to funn: søkefeltet har ingen ledetekst, bare en grå tekst som forsvinner når du skriver. Og statuskolonnen viser status utelukkende med en farget prikk. Vi har en kollega som bruker skjermleser og ikke får noe som helst ut av den kolonnen. Dette er et krav vi må oppfylle.',
-    reproduce: 'Søkefeltet trenger en ledetekst, og statuskolonnen mer enn bare farge.',
-    verify: screenReaderInfoIsFixed,
   },
 ];
 
@@ -198,18 +187,7 @@ export const reviewTickets: ReviewTicket[] = [
     reporter: 'Jonas, salgssjef',
     report:
       'Nyhetssponsorat høst står med 100 % forbruk, men kampanjen går helt til midten av desember. Det tallet kan ikke være riktig – vi har jo ikke brukt opp hele budsjettet ennå. Kan noen rette det?',
-    task: 'Undersøk om dette faktisk er en feil. Konkluder, og vær forberedt på å forsvare konklusjonen.',
+    task: 'Undersøk nyhetssponsorar budsjett og brukt budsjett.',
     regression: utilizationRegression,
-  },
-  {
-    id: 'paste-requirement',
-    key: 'ADWB-4512',
-    title: 'Søk skal treffe umiddelbart ved innliming',
-    kind: 'Krav',
-    priority: 'Høy',
-    reporter: 'Marte, kampanjeplanlegger',
-    report:
-      'Jeg kopierer ofte kampanjenavn rett fra e-post og limer dem inn i søkefeltet. Da vil jeg ha treffet med én gang – ikke vente på at den skal tenke seg om. Dette henger sammen med ADWB-4471.',
-    task: 'Gjelder løsningen din på ADWB-4471. En løsning som venter litt etter hvert tastetrykk oppfyller ikke dette kravet.',
   },
 ];

@@ -72,9 +72,9 @@ ikke være enig i dem.
 2. **Avkrysning gjør ingenting.** Kryss av en kampanje i lista. Teksten over
    tabellen står fortsatt på «0 valgt · totalt budsjett 0 kr».
 
-3. **Detaljpanelet henger igjen.** Klikk på en kampanje for å åpne panelet til
-   høyre. Klikk deretter på en annen kampanje – panelet viser fortsatt den
-   første.
+3. **Detaljpanelet ligger ett klikk bak.** Klikk på en kampanje i lista –
+   ingenting skjer. Klikk deretter på en annen kampanje, og panelet til høyre
+   åpner seg med den forrige kampanjen du klikket på.
 
 4. **Lagring henger og feiler stille.** Åpne en kampanje og lagre et nytt
    budsjett to ganger. Serveren feiler på annenhver lagring, og da blir knappen
